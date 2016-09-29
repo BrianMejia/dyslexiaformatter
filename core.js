@@ -1,3 +1,5 @@
+// Julie is here, testing the commit thing. Yeah...
+
 // Unique ID for the className.
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 var MOUSE_CLICKED_CLASSNAME = 'crx_mouse_clicked';
