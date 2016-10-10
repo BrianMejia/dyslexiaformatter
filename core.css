@@ -3,11 +3,10 @@
   outline: 1px solid #5166bb !important;
 }
 
-.crx_mouse_clicked {
+.crx_mouse_clicked * {
 	background-color: #fffdd0 !important;
 	color: black !important;
 	font-family: Arial, Helvetica, sans-serif !important;
 	font: Arial, Helvetica, sans-serif !important;
 }
-/*problems: cannot highlight spans, text only changes color if you click
-innermost div, links not formatted*/
+/*problems: pictures disappear/
