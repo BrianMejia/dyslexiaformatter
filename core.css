@@ -3,10 +3,12 @@
   outline: 1px solid #5166bb !important;
 }
 
-.crx_mouse_clicked * {
+.crx_mouse_clicked {
 	background-color: #fffdd0 !important;
 	color: black !important;
 	font-family: Arial, Helvetica, sans-serif !important;
 	font: Arial, Helvetica, sans-serif !important;
 }
-/*problems: pictures disappear/
+/*problems: pictures disappear*/
+/*problem is linked to the background-color property of .crx_mouse_clicked.
+  Looking for solution.*/
