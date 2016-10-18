@@ -1,4 +1,4 @@
-.crx_mouse_visited {
+.crx_mouse_visited:not(img) {
   background-color: #e6ffff !important;
   outline: 1px solid #5166bb !important;
 }
@@ -8,5 +8,8 @@
 	color: black !important;
 	font-family: Arial, Helvetica, sans-serif !important;
 	font: Arial, Helvetica, sans-serif !important;
+	font-style: normal;
+	text-decoration: none;
 }
-/*problems: pictures disappear/
+/*problems: pictures disappear
+make italics bold instead of normal*/
