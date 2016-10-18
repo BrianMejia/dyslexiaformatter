@@ -8,8 +8,14 @@
 	color: black !important;
 	font-family: Arial, Helvetica, sans-serif !important;
 	font: Arial, Helvetica, sans-serif !important;
-	font-style: normal;
-	text-decoration: none;
+	font-style: normal !important;
+	text-decoration: none !important;
+	/*font-style: normal !important;*/
+}
+.crx_mouse_clicked i,em {/* makes italic text bold*/
+	font-weight: bold !important;
 }
 /*problems: pictures disappear
-make italics bold instead of normal*/
+should we make bold text bolder?
+make CAPS to caps
+NEED TO PUSH*/

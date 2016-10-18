@@ -8,13 +8,6 @@ var colors = {
   "cream" : "#fffdd0"
 };
 
-addStyleSheet();
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("save").addEventListener("click", saveOptions);
-  document.getElementById("erase").addEventListener("click", eraseOptions);
-});
-
 window.addEventListener('load', loadOptions);
 
 function loadOptions() {
@@ -48,12 +41,4 @@ function saveOptions() {
 function eraseOptions() {
 	localStorage.removeItem("favColor");
 	location.reload();
-}
-
-function addStyleSheet() {
-  var newSheet = document.createElement('link');
-  newSheet.setAttribute('rel','stylesheet');
-  newSheet.setAttribute('type','text/css');
-  newSheet.setAttribute('href', 'core.css');
-  document.getElementsByTagName('head')[0].appendChild(newSheet);
 }
