@@ -13,12 +13,6 @@ var curElement = null;
 document.addEventListener("DOMContentLoaded", function (e) {
   document.body.classList.add(MOUSE_CLICKED_CLASSNAME);
 
-  var script = document.createElement('script');
-  script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
-  script.type = 'text/javascript';
-  document.getElementsByTagName('head')[0].appendChild(script);
-  //include jquery not sure if this works
-
   console.log("LOADED");
 }, false);
 
