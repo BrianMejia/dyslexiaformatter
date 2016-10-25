@@ -13,7 +13,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "css": ["core.css"],
-      "js": ["core.js", "options.js"],
+      "js": ["jquery-3.1.1.min.js", "core.js", "options.js"],
       "run_at": "document_end",
       "all_frames": true
     }
