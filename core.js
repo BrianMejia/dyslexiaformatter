@@ -12,7 +12,6 @@ var curElement = null;
 
 document.addEventListener("DOMContentLoaded", function (e) {
   document.body.classList.add(MOUSE_CLICKED_CLASSNAME);
-
   console.log("LOADED");
 }, false);
 
@@ -54,6 +53,3 @@ document.addEventListener('click', function (e) {
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
   }
 }, false);
-
-
-
