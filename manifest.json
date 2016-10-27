@@ -1,12 +1,12 @@
 {
-  "name": "Div Highlight",
-  "description": "Change the current page",
-  "version": "1.0",
+  "name": "Dyslexia Formatter",
+  "description": "WIP Extension that will make browsing the internet easier for dyslexic people.",
+  "version": "0.1",
   "permissions": [
     "tabs", "http://*/*", "https://*/*", "storage"
   ],
   "browser_action": {
-      "default_title": "Highlight divs using the mouse.",
+      "default_title": "Dyslexia Formatter. ~ to Activate/Deactivate.",
       "default_icon": "icon.png"
   },
   "content_scripts": [
@@ -21,6 +21,9 @@
   "options_ui": {
     "page": "options.html",
     "chrome_style": true
+  },
+  "icons": {
+    "128": "icon.png"
   },
   "manifest_version": 2
 }

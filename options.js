@@ -17,10 +17,12 @@ function save_options() {
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
+  var size = document.getElementById('size').value;
   chrome.storage.sync.set({
     colorSetting : color,
     backgroundSetting : background,
-    fontSetting : font
+    fontSetting : font,
+    sizeSetting : size
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -38,30 +40,36 @@ function restore_options() {
   chrome.storage.sync.get({
     colorSetting : 'Red',
     backgroundSetting : 'Cream',
-    fontSetting : 'Comic Sans'
+    fontSetting : 'Comic Sans MS',
+    sizeSetting : 100
   }, function(items) {
     document.getElementById('color').value = items.colorSetting;
     document.getElementById('background').value = items.backgroundSetting;
     document.getElementById('font').value = items.fontSetting;
+    document.getElementById('size').value = items.sizeSetting;
+    $('#fontValue').html(items.sizeSetting + '%');
+    var newSize = (12 * (items.sizeSetting / 100)) + 'px';
     $('#preview').css({
       'font-family' : fontsTable[items.fontSetting],
       'color' : colorsTable[items.colorSetting],
-      'background-color' : colorsTable[items.backgroundSetting]
+      'background-color' : colorsTable[items.backgroundSetting],
+      'font-size' : newSize
     });
   });
 }
 
 function change_preview() {
-  console.log("changing preview pane.")
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
-  console.log(background);
-  console.log(colorsTable[background]);
+  var fontSize = document.getElementById('size').value;
+  $('#fontValue').html(fontSize + "%");
+  var newSize = (12 * (fontSize / 100)) + 'px';
   $('#preview').css({
     'font-family' : fontsTable[font],
     'color' : colorsTable[color],
-    'background-color' : colorsTable[background]
+    'background-color' : colorsTable[background],
+    'font-size' : newSize
   });
 }
 

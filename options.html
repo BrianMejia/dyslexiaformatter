@@ -2,35 +2,44 @@
 <html>
 <head>
   <title>Dyslexia Formatter Options</title>
-  <style>
-    body: { padding: 2%; }
-		#preview: { margin-top: 2%; }
-  </style>
+	<link rel="stylesheet" type="text/css" href="options.css">
 </head>
 
 <body>
 	Text Color:
-  <select class="prev_changer" id="color">
-   <option value="Red">Red</option>
-   <option value="Green">Green</option>
-   <option value="Blue">Blue</option>
-   <option value="Yellow">Yellow</option>
-  </select>
+  <div class="option">
+    <select class="prev_changer" id="color">
+     <option value="Red">Red</option>
+     <option value="Green">Green</option>
+     <option value="Blue">Blue</option>
+     <option value="Yellow">Yellow</option>
+    </select>
+  </div>
 
 	Font:
-	<select class="prev_changer" id="font">
-		<option value="Times New Roman">Times New Roman</option>
-		<option value="Arial">Arial</option>
-		<option value="Comic Sans MS">Comic Sans</option>
-	</select>
+  <div class="option">
+  	<select class="prev_changer" id="font">
+  		<option value="Times New Roman">Times New Roman</option>
+  		<option value="Arial">Arial</option>
+  		<option value="Comic Sans MS">Comic Sans</option>
+  	</select>
+  </div>
 
 	Background Color:
-	<select class="prev_changer" id="background">
-		<option value="Red">Red</option>
-		<option value="Blue">Blue</option>
-		<option value="Green">Green</option>
-		<option value="Cream">Cream</option>
-	</select>
+  <div class="option">
+  	<select class="prev_changer" id="background">
+  		<option value="Red">Red</option>
+  		<option value="Blue">Blue</option>
+  		<option value="Green">Green</option>
+  		<option value="Cream">Cream</option>
+  	</select>
+  </div>
+
+	Font Size:
+  <div class="option">
+	   <input class="prev_changer" id="size" type="range" min="100" max="300" value="100" step="10"/>
+     <textarea id="fontValue" readonly></textarea>
+  </div>
 
   <div id="status"></div>
   <button id="save">Save</button>
