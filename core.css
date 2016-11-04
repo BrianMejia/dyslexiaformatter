@@ -1,4 +1,4 @@
-.crx_mouse_visited{
+.crx_mouse_visited {
   background-color: #e6ffff !important;
   outline: 1px solid #5166bb !important;
 }
@@ -11,7 +11,7 @@
 	font-style: normal !important;
 	text-decoration: none !important;
 	font-variant: normal !important; /*no small caps*/
-	/*display: block;*/ 
+	/*display: block;*/
 }
 .crx_mouse_clicked i,em {/* makes italic text bold*/
 	font-weight: bold !important;
@@ -21,14 +21,14 @@
 	font-weight: bold !important;
 }
 
-.crx_mouse_clicked img{
+.crx_mouse_clicked img {
 	z-index: 100;
-    position: relative;
+  position: relative;
 }
 
 /*problems: pictures disappear
 make CAPS to caps
 make headings lowercase?
 z-indexes are problem?
-:not(img) 
+:not(img)
 */
