@@ -48,6 +48,17 @@ document.addEventListener('click', function (e) {
   var srcElement = e.srcElement;
 
   if ((srcElement.nodeName == 'DIV' || srcElement.nodeName == 'BODY') && enabledHighlighting) {
+    chrome.storage.sync.get({
+      colorSetting : 'Red',
+      backgroundSetting : 'Cream',
+      fontSetting : 'Comic Sans MS',
+      sizeSetting : 100
+    }, function(items) {
+      console.log(items.colorSetting);
+      console.log(items.backgroundSetting);
+      console.log(items.fontSetting);
+      console.log(items.sizeSetting);
+    });
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
   }
 }, false);
