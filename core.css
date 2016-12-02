@@ -43,13 +43,13 @@
 }
 
 .helvetica *{
-	font-family: Arial, Helvetica, sans-serif !important;
-	font: Arial, Helvetica, sans-serif !important;
+	font-family: Helvetica, sans-serif !important;
+	font: Helvetica, sans-serif !important;
 }
 
 .arial *{
-	font-family: Arial, Arial, sans-serif !important;
-	font: Arial, Arial, sans-serif !important;
+	font-family: Arial, sans-serif !important;
+	font: Arial, sans-serif !important;
 }
 
 /*text colors*/

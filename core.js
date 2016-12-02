@@ -52,21 +52,14 @@ document.addEventListener('click', function (e) {
       colorSetting : 'Red',
       backgroundSetting : 'Cream',
       fontSetting : 'Comic Sans MS',
-      sizeSetting : 100
     }, function(items) {
       console.log(items.colorSetting);
       console.log(items.backgroundSetting);
       console.log(items.fontSetting);
-      console.log(items.sizeSetting);
 
-      srcElement.classList.toggle('comicsans');
-      //srcElement.classList.toggle('arial');
-      //srcElement.classList.toggle('helvetica');
-
-      srcElement.classList.toggle('black');
-
-      srcElement.classList.toggle('cream');
-      //srcElement.classList.toggle('white');
+      srcElement.classList.toggle(items.fontSetting);
+      srcElement.classList.toggle(items.colorSetting);
+      srcElement.classList.toggle(items.backgroundSetting);
       
       //srcElement.style.color='red';
     });
