@@ -4,10 +4,10 @@
 }
 
 .crx_mouse_clicked * {
-	background-color: #fffdd0 !important;
+	/*background-color: #fffdd0 !important;
 	color: black !important;
 	font-family: Arial, Helvetica, sans-serif !important;
-	font: Arial, Helvetica, sans-serif !important;
+	font: Arial, Helvetica, sans-serif !important;*/
 	font-style: normal !important;
 	text-decoration: none !important;
 	font-variant: normal !important; /*no small caps*/
@@ -23,7 +23,39 @@
 
 .crx_mouse_clicked img {
 	z-index: 100;
-  position: relative;
+  	position: relative;
+}
+
+/*background colors*/
+.cream *{
+	background-color: #fffdd0 !important;
+}
+
+.white *{
+	background-color: white !important;
+}
+
+/*fonts*/
+
+.comicsans *{
+	font-family: "Comic Sans MS", cursive, sans-serif !important;
+	font: "Comic Sans MS", cursive, sans-serif !important;
+}
+
+.helvetica *{
+	font-family: Arial, Helvetica, sans-serif !important;
+	font: Arial, Helvetica, sans-serif !important;
+}
+
+.arial *{
+	font-family: Arial, Arial, sans-serif !important;
+	font: Arial, Arial, sans-serif !important;
+}
+
+/*text colors*/
+
+.black *{
+	color: black !important;
 }
 
 /*problems: pictures disappear

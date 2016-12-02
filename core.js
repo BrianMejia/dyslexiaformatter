@@ -58,7 +58,19 @@ document.addEventListener('click', function (e) {
       console.log(items.backgroundSetting);
       console.log(items.fontSetting);
       console.log(items.sizeSetting);
+
+      srcElement.classList.toggle('comicsans');
+      //srcElement.classList.toggle('arial');
+      //srcElement.classList.toggle('helvetica');
+
+      srcElement.classList.toggle('black');
+
+      srcElement.classList.toggle('cream');
+      //srcElement.classList.toggle('white');
+      
+      //srcElement.style.color='red';
     });
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
+    document.querySelectedAll(".crx_mouse_clicked *")[0].style.color = 'red';
   }
 }, false);
