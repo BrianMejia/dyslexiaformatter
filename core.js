@@ -9,7 +9,24 @@ var enabledHighlighting = false;
 var curElement = null;
 
 document.addEventListener("DOMContentLoaded", function (e) {
-  document.body.classList.add(MOUSE_CLICKED_CLASSNAME);
+
+}, false);
+
+document.addEventListener('mouseup', function (e) {
+  var text = "";
+  chrome.storage.sync.get({
+    ttsEnableSetting : false
+  }, function(items) {
+    if (items.ttsEnableSetting) {
+      if (window.getSelection) {
+          text = window.getSelection().toString();
+      } else if (document.selection && document.selection.type != "Control") {
+          text = document.selection.createRange().text;
+      }
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));
+    }
+  });
+
 }, false);
 
 document.addEventListener('keypress', function (e) {
@@ -59,7 +76,7 @@ document.addEventListener('click', function (e) {
       srcElement.classList.toggle(items.fontSetting);
       srcElement.classList.toggle(items.colorSetting);
       srcElement.classList.toggle(items.backgroundSetting);
-      
+
       //srcElement.style.color='red';
     });
     console.log(document.styleSheets);

@@ -12,15 +12,17 @@ var fontsTable = {
 
 // Saves options to chrome.storage.sync.
 function save_options() {
-  var msg = new SpeechSynthesisUtterance('Options saved');
+  var msg = new SpeechSynthesisUtterance('Bleep Blorp.');
   window.speechSynthesis.speak(msg);
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
+  var tts_enable = document.getElementById('tts_enable').checked;
   chrome.storage.sync.set({
     colorSetting : color,
     backgroundSetting : background,
-    fontSetting : font
+    fontSetting : font,
+    ttsEnableSetting : tts_enable
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -36,13 +38,15 @@ function save_options() {
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
-    colorSetting : 'Red',
-    backgroundSetting : 'Cream',
-    fontSetting : 'Comic Sans MS',
+    colorSetting : 'default',
+    backgroundSetting : 'default',
+    fontSetting : 'arial',
+    ttsEnableSetting : false
   }, function(items) {
     document.getElementById('color').value = items.colorSetting;
     document.getElementById('background').value = items.backgroundSetting;
     document.getElementById('font').value = items.fontSetting;
+    document.getElementById('tts_enable').checked = items.ttsEnableSetting;
     $('#preview').css({
       'font-family' : fontsTable[items.fontSetting],
       'color' : colorsTable[items.colorSetting],
