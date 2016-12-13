@@ -14,6 +14,8 @@ var fontsTable = {
 
 // Saves options to chrome.storage.sync.
 function save_options() {
+  var msg = new SpeechSynthesisUtterance('Options saved.');
+  window.speechSynthesis.speak(msg);
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
