@@ -51,14 +51,19 @@ document.addEventListener('click', function (e) {
       colorSetting : 'Red',
       backgroundSetting : 'Cream',
       fontSetting : 'Comic Sans MS',
-      sizeSetting : 100
     }, function(items) {
       console.log(items.colorSetting);
       console.log(items.backgroundSetting);
       console.log(items.fontSetting);
-      console.log(items.sizeSetting);
+
+      srcElement.classList.toggle(items.fontSetting);
+      srcElement.classList.toggle(items.colorSetting);
+      srcElement.classList.toggle(items.backgroundSetting);
+      
+      //srcElement.style.color='red';
     });
     console.log(document.styleSheets);
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
+    document.querySelectedAll(".crx_mouse_clicked *")[0].style.color = 'red';
   }
 }, false);
