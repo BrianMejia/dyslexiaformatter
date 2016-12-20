@@ -60,6 +60,7 @@ function change_preview() {
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
+  console.log(fontsTable[font]);
   $('#preview').css({
     'font-family' : fontsTable[font],
     'color' : colorsTable[color],
