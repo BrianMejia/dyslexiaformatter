@@ -1,11 +1,12 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Dyslexia Formatter Options</title>
-	<link rel="stylesheet" type="text/css" href="options.css">
+	<link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 
 <body>
+  <img src="icon_48.png" style="display: block;margin: auto;">
+  <h3 style="text-align:center;margin-top:1%;margin-bottom:5%;">Dyslexia Formatter Options</h3>
 	Text Color:
   <div class="option">
     <select class="prev_changer" id="color">
@@ -24,7 +25,7 @@
   	</select>
   </div>
 
-	Background Color:
+	BG Color:
   <div class="option">
   	<select class="prev_changer" id="background">
   		<option value="white">White</option>
@@ -38,12 +39,18 @@
     <label><input type="checkbox" id="tts_enable" value="tts_enable">Enable</label>
   </div>
 
+  Voice:
+  <div class="option">
+    <select id="tts_voices">
+    </select>
+  </div>&nbsp;
+
   <div id="status"></div>
   <button id="save">Save</button>
 
 	<div id="preview">Preview</div>
 
 	<script src="jquery-3.1.1.min.js"></script>
-  <script src="options.js"></script>
+  <script src="popup.js"></script>
 </body>
 </html>

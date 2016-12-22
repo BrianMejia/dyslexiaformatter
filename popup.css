@@ -1,5 +1,6 @@
 body {
   padding: 2%;
+  min-width: 250px;
 }
 
 textarea {

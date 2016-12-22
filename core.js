@@ -12,34 +12,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 }, false);
 
-document.addEventListener('mouseup', function (e) {
-  /*speechSynthesis.getVoices().forEach(function(voice) {
-    console.log(voice.name, voice.default ? '(default)' :'', voice.lang);
-  });*/
-  var text = "";
-  chrome.storage.sync.get({
-    ttsEnableSetting : false
-  }, function(items) {
-    if (items.ttsEnableSetting) {
-      var msg = new SpeechSynthesisUtterance();
-      var voices = window.speechSynthesis.getVoices();
-      msg.voice = voices.filter(function(voice) { return voice.name == 'Google UK English Female'; })[0];
-      if (window.getSelection) {
-          text = window.getSelection().toString();
-          /*sentences = text.split(".");
-          for (var i = 0; i < sentences.length; i++) {
-            sentences[i] = sentences[i].concat(', eh?');
-          }
-          text = sentences.join();*/
-      } else if (document.selection && document.selection.type != "Control") {
-          text = document.selection.createRange().text;
-      }
-      msg.text = text;
-      window.speechSynthesis.speak(msg);
-    }
-  });
-}, false);
-
 document.addEventListener('keypress', function (e) {
   if (e.keyCode == 96)
     enabledHighlighting = !enabledHighlighting;
@@ -78,18 +50,13 @@ document.addEventListener('click', function (e) {
 
   if ((srcElement.nodeName == 'DIV' || srcElement.nodeName == 'BODY') && enabledHighlighting) {
     chrome.storage.sync.get({
-      colorSetting : 'Red',
-      backgroundSetting : 'Cream',
-      fontSetting : 'Comic Sans MS',
+      colorSetting : 'black',
+      backgroundSetting : 'cream',
+      fontSetting : 'comicsans',
     }, function(items) {
-      console.log(items.colorSetting);
-      console.log(items.backgroundSetting);
-      console.log(items.fontSetting);
-
       srcElement.classList.toggle(items.fontSetting);
       srcElement.classList.toggle(items.colorSetting);
       srcElement.classList.toggle(items.backgroundSetting);
-
       //srcElement.style.color='red';
     });
     console.log(document.styleSheets);
@@ -97,3 +64,31 @@ document.addEventListener('click', function (e) {
     document.querySelectedAll(".crx_mouse_clicked *")[0].style.color = 'red';
   }
 }, false);
+
+function ttsPhrase(info, tab) {
+  /*speechSynthesis.getVoices().forEach(function(voice) {
+    console.log(voice.name, voice.default ? '(default)' :'', voice.lang);
+  });*/
+  var text = "";
+  chrome.storage.sync.get({
+    ttsEnableSetting : false
+  }, function(items) {
+    if (items.ttsEnableSetting) {
+      var msg = new SpeechSynthesisUtterance();
+      var voices = window.speechSynthesis.getVoices();
+      msg.voice = voices.filter(function(voice) { return voice.name == 'Google UK English Female'; })[0];
+      if (window.getSelection) {
+          text = window.getSelection().toString();
+          /*sentences = text.split(".");
+          for (var i = 0; i < sentences.length; i++) {
+            sentences[i] = sentences[i].concat(', eh?');
+          }
+          text = sentences.join();*/
+      } else if (document.selection && document.selection.type != "Control") {
+          text = document.selection.createRange().text;
+      }
+      msg.text = text;
+      window.speechSynthesis.speak(msg);
+    }
+  });
+}
