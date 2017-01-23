@@ -1,14 +1,17 @@
 {
   "name": "Dyslexia Formatter",
+  "short_name": "dysfrm",
   "description": "WIP Extension that will make browsing the internet easier for dyslexic people.",
-  "version": "0.2",
+  "version": "0.0.0.2",
   "permissions": [
     "contextMenus", "tabs", "http://*/*", "https://*/*", "storage"
   ],
   "browser_action": {
       "default_title": "Dyslexia Formatter. ~ to Activate/Deactivate.",
       "default_icon": {
-          "16": "icon_16.png"
+          "16": "icon_16.png",
+          "48": "icon_48.png",
+          "128": "icon_128.png"
       },
       "default_popup": "popup.html"
   },
