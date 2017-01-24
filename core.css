@@ -11,7 +11,7 @@
 	font-style: normal !important;
 	text-decoration: none !important;
 	font-variant: normal !important; /*no small caps*/
-  z-index: inherit;
+  z-index: inherit;*/
 	/*display: block;*/
 }
 .crx_mouse_clicked i,em {/* makes italic text bold*/
@@ -22,10 +22,10 @@
 	font-weight: bold !important;
 }
 
-.crx_mouse_clicked img {
+/* .crx_mouse_clicked img {
 	z-index: inherit;
   position: relative;
-}
+} */
 
 /*background colors*/
 .cream:not(img){
