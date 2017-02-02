@@ -22,6 +22,12 @@
 	font-weight: bold !important;
 }
 
+.crx_mouse_clicked .fa {
+  font-family: FontAwesome !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+
 /*background colors*/
 .cream:not(img){
 	background-color: #fffdd0 !important;
