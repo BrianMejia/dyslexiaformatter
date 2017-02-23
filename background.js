@@ -1,3 +1,5 @@
+var speechTabId = undefined;
+
 // thanks to https://stackoverflow.com/questions/21947730/chrome-speech-synthesis-with-longer-texts
 var speechUtteranceChunker = function (utt, settings, callback) {
     settings = settings || {};
@@ -75,6 +77,10 @@ function ttsOnClick(info, tab) {
   /*speechSynthesis.getVoices().forEach(function(voice) {
     console.log(voice.name, voice.default ? '(default)' :'', voice.lang);
   });*/
+  chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+    var tab = tabs[0];
+    speechTabId = tab.id;
+  });
   chrome.storage.sync.get({
     ttsEnableSetting : false,
     ttsVoiceSelectionSetting : 'native'
@@ -85,6 +91,7 @@ function ttsOnClick(info, tab) {
           chunkLength: 120
       }, function () {
           //some code to execute when done
+          speechTabId = undefined;
           console.log('done');
       });
     }
@@ -93,3 +100,10 @@ function ttsOnClick(info, tab) {
 
 var id = chrome.contextMenus.create({"title": "Speak Selected Text", "contexts":["selection"],
                                      "onclick": ttsOnClick});
+
+chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
+   if (tabId === speechTabId) {
+     window.speechSynthesis.cancel();
+     speechTabId = undefined;
+   }
+});

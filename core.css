@@ -14,6 +14,7 @@
   z-index: inherit;
 	/*display: block;*/
 }
+
 .crx_mouse_clicked i,em {/* makes italic text bold*/
 	font-weight: bold !important;
 }
@@ -24,8 +25,6 @@
 
 .crx_mouse_clicked .fa {
   font-family: FontAwesome !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
 }
 
 /*background colors*/
