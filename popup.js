@@ -7,7 +7,8 @@ var colorsTable = {
 var fontsTable = {
   'helvetica' : 'Helvetica',
   'arial' : 'Arial',
-  'comicsans' : 'Comic Sans MS'
+  'comicsans' : 'Comic Sans MS',
+  'opendyslexic' : 'Open Dyslexic'
 }
 
 // Saves options to chrome.storage.sync.

@@ -28,15 +28,35 @@
 }
 
 /*background colors*/
-.cream:not(img){
+.bg_cream:not(img){
 	background-color: #fffdd0 !important;
 }
 
-.white *{
+.bg_white *{
 	background-color: white !important;
 }
 
+.bg_black *{
+  background-color: black !important;
+}
+
 /*fonts*/
+
+@font-face {
+  font-family: 'Open Dyslexic';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Open Dyslexic';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Bold.ttf');
+  font-weight: bold;
+}
+
+.opendyslexic *{
+  font-family: "Open Dyslexic", cursive, sans-serif !important;
+  font: "Open Dyslexic", cursive, sans-serif !important;
+}
 
 .comicsans *{
 	font-family: "Comic Sans MS", cursive, sans-serif !important;
@@ -55,8 +75,12 @@
 
 /*text colors*/
 
-.black *{
+.text_black *{
 	color: black !important;
+}
+
+.text_white *{
+  color: white !important;
 }
 
 /*problems: pictures disappear

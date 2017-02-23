@@ -32,5 +32,6 @@
     "48": "icon_48.png",
     "128": "icon_128.png"
   },
+  "web_accessible_resources": ["*.ttf"],
   "manifest_version": 2
 }

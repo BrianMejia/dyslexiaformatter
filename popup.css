@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Open Dyslexic';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   padding: 2%;
   min-width: 250px;

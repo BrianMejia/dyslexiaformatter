@@ -55,8 +55,8 @@ document.addEventListener('click', function (e) {
       fontSetting : 'comicsans',
     }, function(items) {
       srcElement.classList.toggle(items.fontSetting);
-      srcElement.classList.toggle(items.colorSetting);
-      srcElement.classList.toggle(items.backgroundSetting);
+      srcElement.classList.toggle('text_' + items.colorSetting);
+      srcElement.classList.toggle('bg_' + items.backgroundSetting);
     });
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
   }
