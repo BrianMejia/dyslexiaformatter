@@ -15,11 +15,10 @@
 	/*display: block;*/
 }
 
-.crx_mouse_clicked i,em {/* makes italic text bold*/
-	font-weight: bold !important;
-}
-
-.crx_mouse_clicked h1,h2,h3,h4,h5,h6{/* bolds headings, include?*/
+.crx_mouse_clicked h1, .crx_mouse_clicked h2,
+.crx_mouse_clicked h3, .crx_mouse_clicked h4,
+.crx_mouse_clicked h5, .crx_mouse_clicked h6,
+.crx_mouse_clicked i, .crx_mouse_clicked em {/* bolds headings, include?*/
 	font-weight: bold !important;
 }
 
@@ -28,15 +27,15 @@
 }
 
 /*background colors*/
-.bg_cream:not(img){
+.bg_cream:not(img) {
 	background-color: #fffdd0 !important;
 }
 
-.bg_white *{
+.bg_white:not(img) {
 	background-color: white !important;
 }
 
-.bg_black *{
+.bg_black:not(img) {
   background-color: black !important;
 }
 
@@ -53,33 +52,33 @@
   font-weight: bold;
 }
 
-.opendyslexic *{
+.opendyslexic * {
   font-family: "Open Dyslexic", cursive, sans-serif !important;
   font: "Open Dyslexic", cursive, sans-serif !important;
 }
 
-.comicsans *{
+.comicsans * {
 	font-family: "Comic Sans MS", cursive, sans-serif !important;
 	font: "Comic Sans MS", cursive, sans-serif !important;
 }
 
-.helvetica *{
+.helvetica * {
 	font-family: Helvetica, sans-serif !important;
 	font: Helvetica, sans-serif !important;
 }
 
-.arial *{
+.arial * {
 	font-family: Arial, sans-serif !important;
 	font: Arial, sans-serif !important;
 }
 
 /*text colors*/
 
-.text_black *{
+.text_black * {
 	color: black !important;
 }
 
-.text_white *{
+.text_white * {
   color: white !important;
 }
 
