@@ -27,6 +27,7 @@
 }
 
 /*background colors*/
+
 .bg_cream:not(img) {
 	background-color: #fffdd0 !important;
 }
@@ -82,9 +83,21 @@
   color: white !important;
 }
 
-/*problems: pictures disappear
-make CAPS to caps
-make headings lowercase?
-z-indexes are problem?
-:not(img)
-*/
+/*color overlay*/
+
+.overlay {
+  position: relative;
+}
+
+.overlay:after {
+  content: " ";
+  z-index: 100000;
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 255, 0, 0.3);
+  pointer-events: none;
+}

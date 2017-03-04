@@ -11,12 +11,20 @@ var fontsTable = {
   'opendyslexic' : 'Open Dyslexic'
 }
 
+$(document).ready(function(){
+   $('body').on('click', 'a', function(){
+     chrome.tabs.create({url: $(this).attr('href')});
+     return false;
+   });
+});
+
 // Saves options to chrome.storage.sync.
 function save_options() {
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
   var tts_enable = document.getElementById('tts_enable').checked;
+  var overlay_enable = document.getElementById('overlay_enable').checked;
   var tts_voice_options = document.getElementById('tts_voices');
   var tts_voice_selection = tts_voice_options.options[tts_voice_options.selectedIndex].text;
   var tts_voice_index = tts_voice_options.value;
@@ -24,6 +32,7 @@ function save_options() {
     colorSetting : color,
     backgroundSetting : background,
     fontSetting : font,
+    overlayEnableSetting : overlay_enable,
     ttsEnableSetting : tts_enable,
     ttsVoiceIndexSetting : tts_voice_index,
     ttsVoiceSelectionSetting : tts_voice_selection
@@ -54,6 +63,7 @@ function restore_options() {
         colorSetting : 'default',
         backgroundSetting : 'default',
         fontSetting : 'arial',
+        overlayEnableSetting : false,
         ttsEnableSetting : false,
         ttsVoiceIndexSetting : 'native',
         ttsVoiceSelectionSetting : 'native'
@@ -61,6 +71,7 @@ function restore_options() {
         document.getElementById('color').value = items.colorSetting;
         document.getElementById('background').value = items.backgroundSetting;
         document.getElementById('font').value = items.fontSetting;
+        document.getElementById('overlay_enable').checked = items.overlayEnableSetting;
         document.getElementById('tts_enable').checked = items.ttsEnableSetting;
         document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
         $('#preview').css({

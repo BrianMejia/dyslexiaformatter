@@ -8,8 +8,12 @@ var srcElement = null;
 var enabledHighlighting = false;
 var curElement = null;
 
-document.addEventListener("DOMContentLoaded", function (e) {
-
+window.addEventListener('load', function() {
+  chrome.storage.sync.get({
+    overlayEnableSetting : false
+  }, function(items) {
+    if (items.overlayEnableSetting) document.body.classList.add('overlay');
+  });
 }, false);
 
 document.addEventListener('keypress', function (e) {
@@ -76,11 +80,6 @@ function ttsPhrase(info, tab) {
       msg.voice = voices.filter(function(voice) { return voice.name == 'Google UK English Female'; })[0];
       if (window.getSelection) {
           text = window.getSelection().toString();
-          /*sentences = text.split(".");
-          for (var i = 0; i < sentences.length; i++) {
-            sentences[i] = sentences[i].concat(', eh?');
-          }
-          text = sentences.join();*/
       } else if (document.selection && document.selection.type != "Control") {
           text = document.selection.createRange().text;
       }
