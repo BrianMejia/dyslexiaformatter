@@ -25,6 +25,10 @@ $(document).ready(function(){
       $("#overlay_color").toggle(this.checked);
       check_color();
     });
+
+    $('#tts_enable').click(function() {
+      $('#tts_option').toggle(this.checked);
+    });
 });
 
 // Saves options to chrome.storage.sync.
@@ -37,6 +41,7 @@ function save_options() {
   var overlay_color = overlay_rgba;
   var tts_voice_options = document.getElementById('tts_voices');
   var tts_voice_selection = tts_voice_options.options[tts_voice_options.selectedIndex].text;
+  // issue here when saving, make voice bar collapse when tts not enabled
   var tts_voice_index = tts_voice_options.value;
   chrome.storage.sync.set({
     colorSetting : color,
@@ -78,8 +83,8 @@ function restore_options() {
         overlayEnableSetting : false,
         overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
         ttsEnableSetting : false,
-        ttsVoiceIndexSetting : 'native',
-        ttsVoiceSelectionSetting : 'native'
+        ttsVoiceIndexSetting : 'en-US',
+        ttsVoiceSelectionSetting : 'Google US English'
       }, function(items) {
         document.getElementById('color').value = items.colorSetting;
         document.getElementById('background').value = items.backgroundSetting;
@@ -90,6 +95,10 @@ function restore_options() {
 
         if($("#overlay_enable").is(':checked')) {
           $("#overlay_color").show();
+        }
+
+        if($("#tts_enable").is(':checked')) {
+          $("#tts_option").show();
         }
 
         overlay_rgba = items.overlayColorSetting;
@@ -141,6 +150,22 @@ function check_color() {
        });
       $('.demo').minicolors('value', {color: items.overlayColorSetting, opacity: 0.3});
     });
+}
+
+function check_voice() {
+  chrome.storage.sync.get({
+    ttsEnableSetting : false,
+    ttsVoiceIndexSetting : 'en-US',
+    ttsVoiceSelectionSetting : 'Google US English'
+  }, function(items) {
+    if (items.ttsEnableSetting) {
+      window.speechSynthesis.getVoices().forEach(function(voice) {
+        $("#tts_voices").append($('<option>', {value:voice.lang, text:voice.name}));
+      });
+      document.getElementById('tts_enable').checked = items.ttsEnableSetting;
+      document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);

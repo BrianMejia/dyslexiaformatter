@@ -15,9 +15,10 @@ window.addEventListener('load', function() {
   }, function(items) {
     if (items.overlayEnableSetting) {
       var overlay_div = document.createElement('div');
+      var overlay_bg_str = items.overlayColorSetting.replace('0)', '0.3)');
       overlay_div.id = 'df_overlay';
       document.body.appendChild(overlay_div);
-      document.getElementById('df_overlay').style.background = items.overlayColorSetting;
+      document.getElementById('df_overlay').style.background = overlay_bg_str;
       // document.body.classList.add('overlay');
       // document.body.style.background = 'rgba(' + a + ',' + b + ',' + c +  ',' + '0.3' + ')';
     }
