@@ -85,19 +85,14 @@
 
 /*color overlay*/
 
-.overlay {
-  position: relative;
-}
-
-.overlay:after {
-  content: " ";
+#df_overlay {
   z-index: 100000;
-  display: block;
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 255, 0, 0.3);
+  bottom:0;
+  background: rgba(0, 255, 0, 0.5);
   pointer-events: none;
 }

@@ -16,6 +16,10 @@ h3 {
   margin-bottom: 0%;
 }
 
+h4 {
+  margin: 0;
+}
+
 a {
   display: block;
   text-align: center;
@@ -36,4 +40,5 @@ textarea {
 .option {
   width: 100%;
   margin-bottom: 3%;
+  display: block;
 }

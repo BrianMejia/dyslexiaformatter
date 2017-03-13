@@ -22,7 +22,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "css": ["core.css"],
-      "js": ["jquery-3.1.1.min.js", "core.js"],
+      "js": ["jquery-3.1.1.min.js", "minicolors/jquery.minicolors.min.js", "core.js"],
       "run_at": "document_start",
       "all_frames": true
     }

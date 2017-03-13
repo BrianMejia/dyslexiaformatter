@@ -2,14 +2,16 @@
 <head>
   <title>Dyslexia Formatter Options</title>
 	<link rel="stylesheet" type="text/css" href="popup.css">
+  <link rel="stylesheet" type="text/css" href="minicolors/jquery.minicolors.css">
 </head>
 
 <body>
   <img src="icon_48.png" style="display: block;margin: auto;">
   <h3>Dyslexia Formatter Options</h3>
   <a href="https://goo.gl/hqw0bE">Provide feedback!</a>
-	Text Color:
+
   <div class="option">
+    <h4>Text Color:</h4>
     <select class="prev_changer" id="color">
      <option value="black">Black</option>
      <option value="white">White</option>
@@ -17,8 +19,8 @@
     </select>
   </div>
 
-	Font:
   <div class="option">
+    <h4>Font:</h4>
   	<select class="prev_changer" id="font">
   		<option value="helvetica">Helvetica</option>
   		<option value="arial">Arial</option>
@@ -28,8 +30,8 @@
   	</select>
   </div>
 
-	BG Color:
   <div class="option">
+    <h4>BG Color:</h4>
   	<select class="prev_changer" id="background">
   		<option value="white">White</option>
       <option value="black">Black</option>
@@ -38,18 +40,23 @@
   	</select>
   </div>
 
-  Overlay:
   <div class="option">
+    <h4>Overlay:</h4>
     <label><input type="checkbox" id="overlay_enable" value="overlay_enable">Enable</label>
   </div>
 
-  Text-To-Speech:
+  <div style="display:none" class="option minicolors" id="overlay_color">
+    <h4>Overlay Color:</h4>
+    <input type="hidden" id="hidden-input" class="demo minicolors-input">
+  </div>
+
   <div class="option">
+    <h4>Text-to-Speech:</h4>
     <label><input type="checkbox" id="tts_enable" value="tts_enable">Enable</label>
   </div>
 
-  Voice:
   <div class="option">
+    <h4>Voice:</h4>
     <select id="tts_voices">
     </select>
   </div>&nbsp;
@@ -60,6 +67,7 @@
 	<div id="preview">Preview</div>
 
 	<script src="jquery-3.1.1.min.js"></script>
+  <script src="minicolors/jquery.minicolors.min.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

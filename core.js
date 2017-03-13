@@ -10,9 +10,17 @@ var curElement = null;
 
 window.addEventListener('load', function() {
   chrome.storage.sync.get({
-    overlayEnableSetting : false
+    overlayEnableSetting : false,
+    overlayColorSetting : 'rgba(0, 0, 0, 0.0)'
   }, function(items) {
-    if (items.overlayEnableSetting) document.body.classList.add('overlay');
+    if (items.overlayEnableSetting) {
+      var overlay_div = document.createElement('div');
+      overlay_div.id = 'df_overlay';
+      document.body.appendChild(overlay_div);
+      document.getElementById('df_overlay').style.background = items.overlayColorSetting;
+      // document.body.classList.add('overlay');
+      // document.body.style.background = 'rgba(' + a + ',' + b + ',' + c +  ',' + '0.3' + ')';
+    }
   });
 }, false);
 

@@ -11,11 +11,20 @@ var fontsTable = {
   'opendyslexic' : 'Open Dyslexic'
 }
 
+var overlay_rgba = '';
+
 $(document).ready(function(){
    $('body').on('click', 'a', function(){
      chrome.tabs.create({url: $(this).attr('href')});
      return false;
    });
+
+   check_color();
+
+    $('#overlay_enable').click(function() {
+      $("#overlay_color").toggle(this.checked);
+      check_color();
+    });
 });
 
 // Saves options to chrome.storage.sync.
@@ -25,6 +34,7 @@ function save_options() {
   var font = document.getElementById('font').value;
   var tts_enable = document.getElementById('tts_enable').checked;
   var overlay_enable = document.getElementById('overlay_enable').checked;
+  var overlay_color = overlay_rgba;
   var tts_voice_options = document.getElementById('tts_voices');
   var tts_voice_selection = tts_voice_options.options[tts_voice_options.selectedIndex].text;
   var tts_voice_index = tts_voice_options.value;
@@ -33,11 +43,13 @@ function save_options() {
     backgroundSetting : background,
     fontSetting : font,
     overlayEnableSetting : overlay_enable,
+    overlayColorSetting : overlay_color,
     ttsEnableSetting : tts_enable,
     ttsVoiceIndexSetting : tts_voice_index,
     ttsVoiceSelectionSetting : tts_voice_selection
   }, function() {
     // Update status to let user know options were saved.
+    console.log("Save: " + overlay_rgba);
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
     var msg = new SpeechSynthesisUtterance('Bleep Blorp.');
@@ -64,6 +76,7 @@ function restore_options() {
         backgroundSetting : 'default',
         fontSetting : 'arial',
         overlayEnableSetting : false,
+        overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
         ttsEnableSetting : false,
         ttsVoiceIndexSetting : 'native',
         ttsVoiceSelectionSetting : 'native'
@@ -74,6 +87,13 @@ function restore_options() {
         document.getElementById('overlay_enable').checked = items.overlayEnableSetting;
         document.getElementById('tts_enable').checked = items.ttsEnableSetting;
         document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
+
+        if($("#overlay_enable").is(':checked')) {
+          $("#overlay_color").show();
+        }
+
+        overlay_rgba = items.overlayColorSetting;
+
         $('#preview').css({
           'font-family' : fontsTable[items.fontSetting],
           'color' : colorsTable[items.colorSetting],
@@ -96,6 +116,31 @@ function change_preview() {
     'background-color' : colorsTable[background],
     'font-size' : 20
   });
+}
+
+function check_color() {
+    chrome.storage.sync.get({
+      overlayEnableSetting : false,
+      overlayColorSetting : 'rgba(0, 0, 0, 0.0)'
+    }, function(items) {
+      $('.demo').minicolors({
+         control: $(this).attr('data-control') || 'hue',
+         inline: $(this).attr('data-inline') === 'true',
+         defaultValue: items.overlayColorSetting,
+         letterCase: 'lowercase',
+         opacity: false,
+         change: function(hex, opacity) {
+           if(!hex) return;
+           try {
+             console.log(hex);
+             overlay_rgba = $(this).minicolors('rgbaString');
+           } catch(e) {}
+           $(this).select();
+         },
+         theme: 'default'
+       });
+      $('.demo').minicolors('value', {color: items.overlayColorSetting, opacity: 0.3});
+    });
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
