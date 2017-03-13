@@ -8,6 +8,8 @@ var fontsTable = {
   'helvetica' : 'Helvetica',
   'arial' : 'Arial',
   'comicsans' : 'Comic Sans MS',
+  'opensans' : 'Open Sans',
+  'notoserif' : 'Noto Serif',
   'opendyslexic' : 'Open Dyslexic'
 }
 

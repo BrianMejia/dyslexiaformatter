@@ -74,26 +74,3 @@ document.addEventListener('click', function (e) {
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
   }
 }, false);
-
-function ttsPhrase(info, tab) {
-  /*speechSynthesis.getVoices().forEach(function(voice) {
-    console.log(voice.name, voice.default ? '(default)' :'', voice.lang);
-  });*/
-  var text = "";
-  chrome.storage.sync.get({
-    ttsEnableSetting : false
-  }, function(items) {
-    if (items.ttsEnableSetting) {
-      var msg = new SpeechSynthesisUtterance();
-      var voices = window.speechSynthesis.getVoices();
-      msg.voice = voices.filter(function(voice) { return voice.name == 'Google UK English Female'; })[0];
-      if (window.getSelection) {
-          text = window.getSelection().toString();
-      } else if (document.selection && document.selection.type != "Control") {
-          text = document.selection.createRange().text;
-      }
-      msg.text = text;
-      window.speechSynthesis.speak(msg);
-    }
-  });
-}

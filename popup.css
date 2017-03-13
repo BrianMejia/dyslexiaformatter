@@ -1,6 +1,20 @@
 @font-face {
   font-family: 'Open Dyslexic';
-  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Regular.ttf');
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Dyslexic/OpenDyslexic3-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Noto_Serif/NotoSerif-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Sans/OpenSans-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }

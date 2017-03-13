@@ -44,18 +44,50 @@
 
 @font-face {
   font-family: 'Open Dyslexic';
-  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Regular.ttf');
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Dyslexic/OpenDyslexic3-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Open Dyslexic';
-  src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic3-Bold.ttf');
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Dyslexic/OpenDyslexic3-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Sans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Open_Sans/OpenSans-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Noto_Serif/NotoSerif-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/Noto_Serif/NotoSerif-Bold.ttf');
   font-weight: bold;
 }
 
 .opendyslexic * {
   font-family: "Open Dyslexic", cursive, sans-serif !important;
   font: "Open Dyslexic", cursive, sans-serif !important;
+}
+
+.opensans * {
+  font-family: "Open Sans", cursive, sans-serif !important;
+	font: "Open Sans", cursive, sans-serif !important;
+}
+
+.notoserif * {
+  font-family: "Noto Serif", cursive, sans-serif !important;
+	font: "Noto Serif", cursive, sans-serif !important;
 }
 
 .comicsans * {
