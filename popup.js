@@ -38,6 +38,8 @@ function save_options() {
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
+  var paragraph_spacing = document.getElementById('paragraph_spacing').value;
+  var letter_spacing = document.getElementById('letter_spacing').value;
   var tts_enable = document.getElementById('tts_enable').checked;
   var overlay_enable = document.getElementById('overlay_enable').checked;
   var overlay_color = overlay_rgba;
@@ -49,6 +51,8 @@ function save_options() {
     colorSetting : color,
     backgroundSetting : background,
     fontSetting : font,
+    paragraphSetting: paragraph_spacing,
+    letterSetting: letter_spacing,
     overlayEnableSetting : overlay_enable,
     overlayColorSetting : overlay_color,
     ttsEnableSetting : tts_enable,
@@ -59,13 +63,15 @@ function save_options() {
     console.log("Save: " + overlay_rgba);
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
-    var msg = new SpeechSynthesisUtterance('Bleep Blorp.');
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices.filter(function(voice) { return voice.name == tts_voice_selection; })[0];
-    window.speechSynthesis.speak(msg);
-    setTimeout(function() {
-      status.textContent = '';
-    }, 1500);
+    if($("#tts_enable").is(':checked')) {
+        var msg = new SpeechSynthesisUtterance('Bleep Blorp.');
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices.filter(function(voice) { return voice.name == tts_voice_selection; })[0];
+        window.speechSynthesis.speak(msg);
+        setTimeout(function() {
+          status.textContent = '';
+        }, 1500);
+    }
   });
 }
 
@@ -82,6 +88,8 @@ function restore_options() {
         colorSetting : 'default',
         backgroundSetting : 'default',
         fontSetting : 'arial',
+        paragraphSetting: '1',
+        letterSetting: '1',
         overlayEnableSetting : false,
         overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
         ttsEnableSetting : false,
@@ -91,9 +99,12 @@ function restore_options() {
         document.getElementById('color').value = items.colorSetting;
         document.getElementById('background').value = items.backgroundSetting;
         document.getElementById('font').value = items.fontSetting;
+        document.getElementById('paragraph_spacing').value = items.paragraphSetting;
+        document.getElementById('letter_spacing').value = items.letterSetting;
         document.getElementById('overlay_enable').checked = items.overlayEnableSetting;
         document.getElementById('tts_enable').checked = items.ttsEnableSetting;
         document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
+        console.log( items);
 
         if($("#overlay_enable").is(':checked')) {
           $("#overlay_color").show();
@@ -104,28 +115,33 @@ function restore_options() {
         }
 
         overlay_rgba = items.overlayColorSetting;
-
         $('#preview').css({
           'font-family' : fontsTable[items.fontSetting],
           'color' : colorsTable[items.colorSetting],
           'background-color' : colorsTable[items.backgroundSetting],
-          'font-size' : 20
+          'font-size' : 20,
+          'line-height' : items.paragraphSetting,
+          'letter-spacing' : items.letterSetting
         });
       });
     }
-  }, 0);
+  });
 }
 
 function change_preview() {
   var color = document.getElementById('color').value;
   var background = document.getElementById('background').value;
   var font = document.getElementById('font').value;
+  var paragraph_spacing = document.getElementById('paragraph_spacing').value;
+  var letter_spacing = document.getElementById('letter_spacing').value;
   console.log(fontsTable[font]);
   $('#preview').css({
     'font-family' : fontsTable[font],
     'color' : colorsTable[color],
     'background-color' : colorsTable[background],
-    'font-size' : 20
+    'font-size' : 20,
+    'line-height': paragraph_spacing,
+    'letter-spacing': letter_spacing
   });
 }
 
@@ -160,6 +176,7 @@ function check_voice() {
     ttsVoiceIndexSetting : 'en-US',
     ttsVoiceSelectionSetting : 'Google US English'
   }, function(items) {
+      console.log(items);
     if (items.ttsEnableSetting) {
       window.speechSynthesis.getVoices().forEach(function(voice) {
         $("#tts_voices").append($('<option>', {value:voice.lang, text:voice.name}));
