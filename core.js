@@ -11,7 +11,7 @@ var curElement = null;
 window.addEventListener('load', function() {
   chrome.storage.sync.get({
     overlayEnableSetting : false,
-    overlayColorSetting : 'rgba(0, 0, 0, 0.0)'
+    overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
   }, function(items) {
     if (items.overlayEnableSetting) {
       var overlay_div = document.createElement('div');
@@ -66,10 +66,20 @@ document.addEventListener('click', function (e) {
       colorSetting : 'black',
       backgroundSetting : 'cream',
       fontSetting : 'comicsans',
+      paragraphSetting: '1',
+      letterSetting: '1'
     }, function(items) {
       srcElement.classList.toggle(items.fontSetting);
       srcElement.classList.toggle('text_' + items.colorSetting);
       srcElement.classList.toggle('bg_' + items.backgroundSetting);
+      if (srcElement.style.letterSpacing == ""){
+          srcElement.setAttribute("style", "letter-spacing: " + items.letterSetting + "px !important; line-height: " + items.paragraphSetting + " !important");
+      } else {
+          srcElement.style.removeProperty("letter-spacing");
+          srcElement.style.removeProperty("line-height");
+      }
+      //document.body.style.removeProperty("letter-spacing");
+      //document.body.style.letterSpacing = items.letterSetting;
     });
     srcElement.classList.toggle(MOUSE_CLICKED_CLASSNAME);
   }
