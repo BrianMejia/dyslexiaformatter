@@ -25,6 +25,8 @@ window.addEventListener('load', function() {
   });
 }, false);
 
+//
+
 document.addEventListener('keypress', function (e) {
   if (e.keyCode == 96)
     enabledHighlighting = !enabledHighlighting;
