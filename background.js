@@ -98,8 +98,16 @@ function ttsOnClick(info, tab) {
   });
 }
 
+function stopText(info, tab){
+   speechUtteranceChunker.cancel = true;
+   window.speechSynthesis.cancel();
+}
+
 var id = chrome.contextMenus.create({"title": "Speak Selected Text", "contexts":["selection"],
                                      "onclick": ttsOnClick});
+
+var id2 = chrome.contextMenus.create({"title": "Stop Speaking Text", "contexts":["all"],
+                                     "onclick": stopText});
 
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
    if (tabId === speechTabId) {
