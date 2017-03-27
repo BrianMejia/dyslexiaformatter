@@ -2,6 +2,7 @@ var colorsTable = {
   'black' : '#000000',
   'white' : '#ffffff',
   'cream' : '#fffdd0',
+  'rose'  : '#ffe4e1', 
 };
 
 var fontsTable = {
