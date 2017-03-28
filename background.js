@@ -107,7 +107,7 @@ var id = chrome.contextMenus.create({"title": "Speak Selected Text", "contexts":
                                      "onclick": ttsOnClick});
 
 var id2 = chrome.contextMenus.create({"title": "Stop Speaking Text", "contexts":["all"],
-                                     "onclick": stopText});
+                                     "onclick": ttsStop});
 
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
   if (tabId === speechTabId) ttsStop();
