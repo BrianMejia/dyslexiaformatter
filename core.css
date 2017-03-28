@@ -40,6 +40,10 @@
   background-color: black !important;
 }
 
+.bg_rose:not(img) {
+  background-color: #ffe4e1 !important;
+}
+
 /*fonts*/
 
 @font-face {
