@@ -11,7 +11,7 @@ var curElement = null;
 window.addEventListener('load', function() {
   chrome.storage.sync.get({
     overlayEnableSetting : false,
-    overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
+    overlayColorSetting : 'rgba(0, 0, 0, 0.0)'
   }, function(items) {
     if (items.overlayEnableSetting) {
       var overlay_div = document.createElement('div');
@@ -28,12 +28,44 @@ window.addEventListener('load', function() {
 //
 
 document.addEventListener('keypress', function (e) {
-  if (e.keyCode == 96)
+  if (e.keyCode == 96) // 96 is `
     enabledHighlighting = !enabledHighlighting;
-  else if (e.keyCode == 92 && speechSynthesis.speaking)
-    speechSynthesis.cancel();
+  else if (e.keyCode == 92) { // 92 is \
+    chrome.storage.sync.get({
+      overlayEnableSetting : false,
+      overlayColorSetting : 'rgba(0, 0, 0, 0.0)'
+    }, function(items) {
+      if (items.overlayEnableSetting) {
+        var overlay_div_exists = document.getElementById('df_overlay');
+        if (overlay_div_exists != null) {
+          overlay_div_exists.parentNode.removeChild(overlay_div_exists);
+        } else {
+          var overlay_div = document.createElement('div');
+          var overlay_bg_str = items.overlayColorSetting.replace('0)', '0.3)');
+          overlay_div.id = 'df_overlay';
+          document.body.appendChild(overlay_div);
+          document.getElementById('df_overlay').style.background = overlay_bg_str;
+        }
+      }
+    });
+  } else if (e.keyCode == 47) { // 47 is /
+      chrome.storage.sync.get({
+        ttsEnableSetting : false
+      }, function(items) {
+        if (items.ttsEnableSetting) {
+          var text = "";
+          if (window.getSelection) {
+              text = window.getSelection().toString();
+          } else if (document.selection && document.selection.type != "Control") {
+              text = document.selection.createRange().text;
+          }
+          chrome.runtime.sendMessage({msg : "content_check_tts", tts_text : text});
+        }
+      });
+  }
   if (!enabledHighlighting)
     curElement.classList.remove(MOUSE_VISITED_CLASSNAME);
+  // alert(e.keyCode);
 }, false);
 
 // Mouse listener for any move event on the current document.

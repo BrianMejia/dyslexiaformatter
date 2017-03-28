@@ -98,12 +98,33 @@ function ttsOnClick(info, tab) {
   });
 }
 
+function ttsStop() {
+    speechUtteranceChunker.cancel = true;
+    window.speechSynthesis.cancel();
+}
+
 var id = chrome.contextMenus.create({"title": "Speak Selected Text", "contexts":["selection"],
                                      "onclick": ttsOnClick});
 
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
-   if (tabId === speechTabId) {
-     speechUtteranceChunker.cancel = true;
-     window.speechSynthesis.cancel();
-   }
+  if (tabId === speechTabId) ttsStop();
+});
+
+chrome.extension.onMessage.addListener(function (request) {
+    if (request.msg == "content_check_tts") {
+      if (window.speechSynthesis.speaking) ttsStop();
+      else {
+        chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+          var tab = tabs[0];
+          speechTabId = tab.id;
+        });
+        var utt = new SpeechSynthesisUtterance(request.tts_text);
+        speechUtteranceChunker(utt, {
+            chunkLength: 120
+        }, function () {
+            speechTabId = undefined;
+            console.log('done');
+        });
+      }
+    }
 });
