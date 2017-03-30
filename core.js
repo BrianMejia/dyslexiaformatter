@@ -49,19 +49,13 @@ document.addEventListener('keypress', function (e) {
       }
     });
   } else if (e.keyCode == 47) { // 47 is /
-      chrome.storage.sync.get({
-        ttsEnableSetting : false
-      }, function(items) {
-        if (items.ttsEnableSetting) {
-          var text = "";
-          if (window.getSelection) {
-              text = window.getSelection().toString();
-          } else if (document.selection && document.selection.type != "Control") {
-              text = document.selection.createRange().text;
-          }
-          chrome.runtime.sendMessage({msg : "content_check_tts", tts_text : text});
-        }
-      });
+      var text = "";
+      if (window.getSelection) {
+          text = window.getSelection().toString();
+      } else if (document.selection && document.selection.type != "Control") {
+          text = document.selection.createRange().text;
+      }
+      chrome.runtime.sendMessage({msg : "content_check_tts", tts_text : text});
   }
   if (!enabledHighlighting)
     curElement.classList.remove(MOUSE_VISITED_CLASSNAME);

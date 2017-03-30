@@ -2,7 +2,7 @@ var colorsTable = {
   'black' : '#000000',
   'white' : '#ffffff',
   'cream' : '#fffdd0',
-  'rose'  : '#ffe4e1', 
+  'rose'  : '#ffe4e1',
 };
 
 var fontsTable = {
@@ -29,9 +29,6 @@ $(document).ready(function(){
       check_color();
     });
 
-    $('#tts_enable').click(function() {
-      $('#tts_option').toggle(this.checked);
-    });
 });
 
 // Saves options to chrome.storage.sync.
@@ -41,7 +38,6 @@ function save_options() {
   var font = document.getElementById('font').value;
   var paragraph_spacing = document.getElementById('paragraph_spacing').value;
   var letter_spacing = document.getElementById('letter_spacing').value;
-  var tts_enable = document.getElementById('tts_enable').checked;
   var overlay_enable = document.getElementById('overlay_enable').checked;
   var overlay_color = overlay_rgba;
   var tts_voice_options = document.getElementById('tts_voices');
@@ -56,7 +52,6 @@ function save_options() {
     letterSetting: letter_spacing,
     overlayEnableSetting : overlay_enable,
     overlayColorSetting : overlay_color,
-    ttsEnableSetting : tts_enable,
     ttsVoiceIndexSetting : tts_voice_index,
     ttsVoiceSelectionSetting : tts_voice_selection
   }, function() {
@@ -64,15 +59,9 @@ function save_options() {
     console.log("Save: " + overlay_rgba);
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
-    if($("#tts_enable").is(':checked')) {
-        var msg = new SpeechSynthesisUtterance('Bleep Blorp.');
-        var voices = window.speechSynthesis.getVoices();
-        msg.voice = voices.filter(function(voice) { return voice.name == tts_voice_selection; })[0];
-        window.speechSynthesis.speak(msg);
-        setTimeout(function() {
-          status.textContent = '';
-        }, 1500);
-    }
+    setTimeout(function() {
+      status.textContent = '';
+    }, 1500);
   });
 }
 
@@ -93,7 +82,6 @@ function restore_options() {
         letterSetting: '1',
         overlayEnableSetting : false,
         overlayColorSetting : 'rgba(0, 0, 0, 0.0)',
-        ttsEnableSetting : false,
         ttsVoiceIndexSetting : 'en-US',
         ttsVoiceSelectionSetting : 'Google US English'
       }, function(items) {
@@ -103,16 +91,11 @@ function restore_options() {
         document.getElementById('paragraph_spacing').value = items.paragraphSetting;
         document.getElementById('letter_spacing').value = items.letterSetting;
         document.getElementById('overlay_enable').checked = items.overlayEnableSetting;
-        document.getElementById('tts_enable').checked = items.ttsEnableSetting;
         document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
-        console.log( items);
+        console.log(items);
 
         if($("#overlay_enable").is(':checked')) {
           $("#overlay_color").show();
-        }
-
-        if($("#tts_enable").is(':checked')) {
-          $("#tts_option").show();
         }
 
         overlay_rgba = items.overlayColorSetting;
@@ -169,23 +152,6 @@ function check_color() {
        });
       $('.demo').minicolors('value', {color: items.overlayColorSetting, opacity: 0.3});
     });
-}
-
-function check_voice() {
-  chrome.storage.sync.get({
-    ttsEnableSetting : false,
-    ttsVoiceIndexSetting : 'en-US',
-    ttsVoiceSelectionSetting : 'Google US English'
-  }, function(items) {
-      console.log(items);
-    if (items.ttsEnableSetting) {
-      window.speechSynthesis.getVoices().forEach(function(voice) {
-        $("#tts_voices").append($('<option>', {value:voice.lang, text:voice.name}));
-      });
-      document.getElementById('tts_enable').checked = items.ttsEnableSetting;
-      document.getElementById('tts_voices').value = items.ttsVoiceIndexSetting;
-    }
-  });
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);

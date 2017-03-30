@@ -82,10 +82,8 @@ function ttsOnClick(info, tab) {
     speechTabId = tab.id;
   });
   chrome.storage.sync.get({
-    ttsEnableSetting : false,
     ttsVoiceSelectionSetting : 'native'
   }, function(items) {
-    if (items.ttsEnableSetting) {
       var msg = new SpeechSynthesisUtterance(info.selectionText);
       speechUtteranceChunker(msg, {
           chunkLength: 120
@@ -94,7 +92,6 @@ function ttsOnClick(info, tab) {
           speechTabId = undefined;
           console.log('done');
       });
-    }
   });
 }
 
