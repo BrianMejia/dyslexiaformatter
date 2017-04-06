@@ -2,7 +2,7 @@
   "name": "Dyslexia Formatter",
   "short_name": "dysfrm",
   "description": "WIP Extension that will make browsing the internet easier for dyslexic people.",
-  "version": "0.0.0.5",
+  "version": "0.0.0.6",
   "permissions": [
     "contextMenus", "tabs", "http://*/*", "https://*/*", "storage"
   ],
